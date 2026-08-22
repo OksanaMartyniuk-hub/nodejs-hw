@@ -1,7 +1,7 @@
 import createHttpError from 'http-errors';
 import { Note } from '../models/note.js';
 
-export const getNotes = async (req, res, next) => {
+export const getAllNotes = async (req, res, next) => {
   try {
     const notes = await Note.find();
     res.status(200).json(notes);
@@ -45,7 +45,7 @@ export const deleteNote = async (req, res, next) => {
       throw createHttpError(404, 'Note not found');
     }
 
-    res.status(200).json({ message: 'Note deleted successfully' });
+    res.status(200).json(note);
   } catch (err) {
     next(err);
   }
