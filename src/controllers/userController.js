@@ -2,6 +2,7 @@ import createHttpError from 'http-errors';
 
 import { saveFileToCloudinary } from '../utils/saveFileToCloudinary.js';
 import { User } from '../models/user.js';
+
 export const updateUserAvatar = async (req, res, next) => {
   try {
     if (!req.file) {
@@ -16,7 +17,7 @@ export const updateUserAvatar = async (req, res, next) => {
         avatar: result.secure_url,
       },
       {
-        new: true,
+        returnDocument: 'after',
       },
     );
 
